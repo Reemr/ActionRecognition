@@ -67,15 +67,15 @@ def image_from_sequence_generator(data_list, batch_size, input_shape, num_classe
 def image_generator(listtxt_dir, frames_dir, batch_size, img_size, num_classes, mean_sub=True, normalization=True,
                     random_crop=True, horizontal_flip=True):
     '''
-    
-    :param listtxt_dir: 
-    :param frames_dir: 
-    :param batch_size: 
-    :param img_size: 
-    :param num_classes: 
-    :param mean_sub: 
-    :param normalization: 
-    :return: 
+
+    :param listtxt_dir:
+    :param frames_dir:
+    :param batch_size:
+    :param img_size:
+    :param num_classes:
+    :param mean_sub:
+    :param normalization:
+    :return:
     '''
     with open(listtxt_dir) as fo:
         lines = [line for line in fo]
@@ -176,14 +176,14 @@ def two_stream3_generator(listtxt_dir, spatial_dir, temporal_dir, batch_size, im
 
 def two_stream18_generator(list_dir, spatial_dir, temporal_dir, batch_size, spatial_shape, temporal_shape, num_classes):
     '''
-    
+
     :param list_dir: '.../testlist.txt'
     :param spatial_dir: '.../test/'
     :param temporal_dir: '.../test/'
-    :param batch_size: 
-    :param input_shape: 
-    :param num_classes: 
-    :return: 
+    :param batch_size:
+    :param input_shape:
+    :param num_classes:
+    :return:
     '''
     with open(list_dir) as fo:
         test_list = [line for line in fo]
@@ -265,12 +265,12 @@ def get_data_list(list_dir, video_dir):
 if __name__ == '__main__':
     image_size = (216, 216, 3)
 
-    data_dir = '/home/changan/ActionRecognition/data'
+    data_dir = 'C:\\Users\\Reem\\Projects\\ActionRecognition\\data'
     list_dir = os.path.join(data_dir, 'ucfTrainTestlist')
 
     test_list = os.path.join(list_dir, 'testlist.txt')
-    frames_dir = '/home/changan/ActionRecognition/data/UCF-Preprocessed-OF/test'
-    flow_dir = '/home/changan/ActionRecognition/data/OF_data/test'
+    frames_dir = 'C:\\Users\\Reem\\Projects\\ActionRecognition\\data\\Movie-Preprocessed-OF/test'
+    flow_dir = 'C:\\Users\\Reem\\Projects\\ActionRecognition\\data\\OF_data/test'
     BatchSize = 32
     N_CLASSES = 101
     generator = two_stream18_generator(test_list, frames_dir, flow_dir, BatchSize,

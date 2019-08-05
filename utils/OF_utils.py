@@ -93,6 +93,6 @@ def _calc_optical_flow(prev, next_):
 
 
 if __name__ == '__main__':
-    src_dir = '/home/changan/ActionRecognition/data/UCF-Preprocessed-OF'
-    dest_dir = '/home/changan/ActionRecognition/data/OF_data'
+    src_dir = 'C:\\Users\\Reem\\Projects\\ActionRecognition\\data\\Movie-Preprocessed-OF'
+    dest_dir = 'C:\\Users\\Reem\\Projects\\ActionRecognition\\data\\OF_data'
     optical_flow_prep(src_dir, dest_dir, mean_sub=True, overwrite=True)

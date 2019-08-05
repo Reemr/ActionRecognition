@@ -4,7 +4,7 @@ import os, cv2, random
 import shutil
 import scipy.misc
 import time
-from .OF_utils import optical_flow_prep
+from OF_utils import optical_flow_prep
 
 
 def combine_list_txt(list_dir):
@@ -212,14 +212,14 @@ def regenerate_data(data_dir, list_dir, UCF_dir):
     sequence_length = 10
     image_size = (216, 216, 3)
 
-    dest_dir = os.path.join(data_dir, 'UCF-Preprocessed-OF')
+    dest_dir = os.path.join(data_dir, 'Movie-Preprocessed-OF')
     # generate sequence for optical flow
     preprocessing(list_dir, UCF_dir, dest_dir, sequence_length, image_size, overwrite=True, normalization=False,
                   mean_subtraction=False, horizontal_flip=False, random_crop=True, consistent=True, continuous_seq=True)
 
     # compute optical flow data
-    src_dir = '/home/changan/ActionRecognition/data/UCF-Preprocessed-OF'
-    dest_dir = '/home/changan/ActionRecognition/data/OF_data'
+    src_dir = 'C:\\Users\\Reem\\Projects\\ActionRecognition\\data\\Movie-Preprocessed-OF'
+    dest_dir = 'C:\\Users\\Reem\\Projects\\ActionRecognition\\data\\OF_data'
     optical_flow_prep(src_dir, dest_dir, mean_sub=True, overwrite=True)
 
     elapsed_time = time.time() - start_time
@@ -232,16 +232,20 @@ if __name__ == '__main__':
     sequence_length = 10
     image_size = (216, 216, 3)
 
-    data_dir = '/home/changan/ActionRecognition/data'
-    list_dir = os.path.join(data_dir, 'ucfTrainTestlist')
-    UCF_dir = os.path.join(data_dir, 'UCF-101')
+    data_dir = 'C:\\Users\\Reem\\Projects\\ActionRecognition\\data'
+    list_dir = os.path.join(data_dir, 'movieTrainTestlist')
+    Movie_dir = os.path.join(data_dir, 'Movie_dataset_sample')
     frames_dir = os.path.join(data_dir, 'frames/mean.npy')
 
     # add index number to testlist file
-    # index_dir = os.path.join(list_dir, 'classInd.txt')
-    # txt_dir = os.path.join(list_dir, 'testlist01.txt')
-    # dest_dir = os.path.join(list_dir, 'testlist.txt')
-    # preprocess_listtxt(list_dir, index_dir, txt_dir, dest_dir)
+    index_dir = os.path.join(list_dir, 'classInd.txt')
+    txt_dir = os.path.join(list_dir, 'testlist0.txt')
+    dest_dir = os.path.join(list_dir, 'testlist.txt')
+    preprocess_listtxt(list_dir, index_dir, txt_dir, dest_dir)
+    txt_dir = os.path.join(list_dir, 'trainlist0.txt')
+    dest_dir = os.path.join(list_dir, 'trainlist.txt')
+    preprocess_listtxt(list_dir, index_dir, txt_dir, dest_dir)
+
 
     # generate sequence for optical flow
     # dest_dir = os.path.join(data_dir, 'UCF-Preprocessed-OF')
@@ -257,4 +261,4 @@ if __name__ == '__main__':
     # preprocess_flow_image(flow_dir)
 
     # generate sequence and optical flow data
-    regenerate_data(data_dir, list_dir, UCF_dir)
+    regenerate_data(data_dir, list_dir, Movie_dir)
